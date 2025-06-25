@@ -10,6 +10,9 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <QStandardPaths>
+#include <QThread>
+#include <cstring>
 
 QString s_runtimePath;
 
