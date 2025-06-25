@@ -5,7 +5,9 @@ unset DISPLAY
 
 # Создаем директорию для сессионной шины в домашней директории
 RUNTIME_DIR="$HOME/.dbus-session"
-mkdir -p "$RUNTIME_DIR"
+echo "Creating directory: $RUNTIME_DIR"
+mkdir -vp "$RUNTIME_DIR"  # -v для вывода информации, -p для создания родительских каталогов
+ls -ld "$RUNTIME_DIR"
 
 # Запускаем сессионную шину DBus
 dbus-daemon --session --print-address > "$RUNTIME_DIR/bus_address" &
