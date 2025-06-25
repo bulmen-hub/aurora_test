@@ -94,7 +94,7 @@ void ApplicationConfiguration::fileChanged(const QString& path) {
 ConfigurationManager::ConfigurationManager(QObject* parent) : QObject(parent) {}
 
 void ConfigurationManager::loadAllConfigurations() {
-    QString configDir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/com.system.configurationManager";
+    QString configDir = QDir::homePath() + "/com.system.configurationManager";
     QDir dir(configDir);
     
     if (!dir.exists()) {
@@ -103,8 +103,9 @@ void ConfigurationManager::loadAllConfigurations() {
     }
     
     // Регистрация сервиса в DBus
-    if (!QDBusConnection::sessionBus().registerService("com.system.configurationManager")) {
-        qWarning() << "Failed to register DBus service:" << QDBusConnection::sessionBus().lastError().message();
+    QDBusConnection bus = QDBusConnection::sessionBus();
+    if (!bus.registerService("com.system.configurationManager")) {
+        qCritical() << "Failed to register DBus service:" << bus.lastError().message();
     }
     
     // Загрузка всех конфигураций
