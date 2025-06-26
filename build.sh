@@ -17,11 +17,11 @@ mkdir -p build_client
 
 # Собираем сервис
 cd build_service
-cmake ../configuration_manager_service1
+cmake ../configuration_manager_service
 make
 
 # Проверяем сборку сервиса
-if [ ! -f configuration_manager_service1 ]; then
+if [ ! -f configuration_manager_service ]; then
     echo "Error: Failed to build service"
     exit 1
 fi
