@@ -144,7 +144,7 @@ New configuration applied: Timeout = 1000 ms, Phrase = "Please stop me"
 tail -f service.log
 ```
 
-Для проверки D-Bus соединения:
+Для проверки D-Bus соединения (перед проверкой обязательно экспортируйте адрес сессионной шины):
 
 ```
 dbus-send --session --print-reply --dest=com.system.configurationManager \
