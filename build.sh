@@ -28,11 +28,11 @@ fi
 
 # Собираем клиент
 cd ../build_client
-cmake ../conf_manager_application
+cmake ../conf_manager_application1
 make
 
 # Проверяем сборку клиента
-if [ ! -f conf_manager_application ]; then
+if [ ! -f conf_manager_application1 ]; then
     echo "Error: Failed to build client"
     exit 1
 fi
